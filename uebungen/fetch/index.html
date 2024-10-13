@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+
+<body onload="getAll()">
+
+    <div id="content"></div>
+
+    <script>
+
+       // Exercise with Kevin
+           async function fetchData(){
+                let firstFetch = await fetch('db.json');
+                let finalFetch = await firstFetch.json();
+                console.log(finalFetch);
+            }
+   // Exercise with Kevin 
+   async function fetchDataAsText() {
+            let firstFetch = await fetch('h1.txt');
+            let finalFetch = await firstFetch.text();
+            document.getElementById('content').innerHTML = finalFetch;
+        }
+
+
+        function fetchDataWithThen() {
+            fetch('db.json')
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('something went wrong', error);
+                });
+        }
+     
+        function fetchDataWithText() {
+            fetch('h1.txt')
+                .then(response => {
+                    return response.text()
+                })
+                .then(data => {
+                    document.getElementById('content').innerHTML = data
+                })
+                .catch(error => {
+                    console.error('something went wrong, please try again!',error);
+                });
+        }
+
+        function getAll(){
+            Promise.all([
+            fetch('db.json').then(response => response.json()),
+            fetch('h1.txt').then (response => response.text())
+            ])
+            .then (([firstFetch, secondFetch]) => {
+                let level = firstFetch.level
+                let name = firstFetch.name
+                let art = firstFetch.art
+                console.log(firstFetch);
+                document.getElementById('content').innerHTML = secondFetch;  
+                document.getElementById('content').innerHTML += 
+                `<p>Level: ${level}</p> <br> 
+                <p>Name: ${name}</p> <br>
+                <p>Art: ${art}</p> <br>`;  
+            })
+            .catch( error => {
+                console.error('Ups, versuche es erneut');                
+            })
+        }
+  
+    </script>
+
+</body>
+
+</html>

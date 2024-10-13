@@ -1,0 +1,34 @@
+
+.Poke-Card{
+    background-color: white;
+    width: 250px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Card-Header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.Card-IMG{
+    overflow: hidden;
+   
+
+}
+
+.Card-IMG img {
+    width: 100%;
+    aspect-ratio: 1/1.15;
+}
+
+.Card-IMG img:hover{
+    transform: scale(1.05);
+    transition: all .25s ease-in-out;
+}
+
+.Card-Details{
+    display: flex;
+    justify-content: space-around;
+}
+

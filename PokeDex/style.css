@@ -1,0 +1,30 @@
+:root{
+    --paddingBodyLR: 0 32px;
+    --PrimaryColor: #3e3938;
+    --SecondaryColor: #135a7e
+}
+
+body{
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--PrimaryColor);
+}
+
+.content{
+    padding: var(--paddingBodyLR);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+    
+
+
+.Nav-Bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--SecondaryColor);
+    padding: var(--paddingBodyLR);
+}
