@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./styles/typeColors.css">
     <link rel="stylesheet" href="./styles/singlePokeCard.css">
     <link rel="stylesheet" href="./styles/mediaquerrys.css">
+    <link rel="stylesheet" href="./styles/respMenu.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -27,18 +28,27 @@
 
     <header>
         <div class="Nav-Bar m-auto">
+
             <div class="Nav-Left">
                 <img onclick="renderPoke(), closeSingleCard()" src="./assests/pokemon.png" alt="">
             </div>
+
+
             <div class="input">
                 <input onkeyup="filterPoke()" type="text" id="search" placeholder=" search Pokemon...">
+               
+            </div>
+
+
+
+            <div class="nav-Right">
                 <div class="settings-Fav">
                     <div class="open-settings">
-                        <img onclick="openSettings()" src="./assests/settings.png" alt="" srcset="">
                         <div id="settings" class="settings settings-closed">
                             <input id="setting" type="number" placeholder="How many Pokemons ?">
                             <button onclick="changeSettings()"><img src="./assests/tick.png" alt="" srcset=""></button>
                         </div>
+                        <img onclick="openSettings()" src="./assests/settings.png" alt="" srcset="">
 
                     </div>
                     <div class="fav-wrapper">
@@ -46,10 +56,56 @@
                         <img onclick="renderFavoreds()" src="./assests/heart.png" alt="">
                     </div>
                 </div>
-            </div>
-            <div class="nav-Right">
-
                 <img class="pika" onclick="renderPoke(), closeSingleCard()" src="./assests/pikachu.png" alt="">
+            </div>
+
+
+
+
+
+            <div class="Resp-Menu-Wrapper">
+                <div onclick="toggleRespMenu(), line1(), line2(), line3()" class="Resp-Menu">
+                    <div id="line1" class="line top"></div>
+                    <div id="line2" class="line mid"></div>
+                    <div id="line3" class="line bot"></div>
+                </div>
+
+                <div id="toggleRespMenu" class="Resp-Icons Resp-Icons-Closed ">
+
+                    <div class="open-settings-resp">
+
+
+                        <div id="settingsResp" class="settings-resp settings-closed-resp">
+                            <input class="input-resp" id="settingResp" type="number" placeholder="How many Pokemons ?">
+                            <button class="button-resp" onclick="changeSettingsResp()"><img src="./assests/tick.png"
+                                    alt="" srcset=""></button>
+                        </div>
+
+
+                        <img onclick="openSettingsResp()" src="./assests/settings.png" alt="" srcset="">
+                    </div>
+
+
+
+                    <div class="search-resp">
+                        <div id="searchsResp" class="input-resp search-resp search-closed">
+                            <input id="searchResp" class="input-resp"  onkeyup="filterPoke()" type="text"
+                                placeholder=" search Pokemon...">
+
+                        </div>
+
+                        <img onclick="openSearchResp()" src="./assests/search.png" alt="">
+                    </div>
+
+
+
+                    <div onclick="renderFavoreds()" class="fav-wrapper-resp">
+                        <span class="amount-Resp" id="amountFavResp"></span>
+                        <img src="./assests/heart.png" alt="">
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </header>

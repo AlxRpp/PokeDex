@@ -96,25 +96,31 @@ footer {
     align-items: center;
     background-color: var(--SecondaryColor);
     padding: var(--paddingBodyLR);
+    height: 120px;
 
 }
 
 .Nav-Left{
-    width: clamp(100px, 100%, 300px);
+    /* width: clamp(100px, 100%, 300px);*/
+    width: 230px;
     /* padding: 8px 0; */
     aspect-ratio: 3 / 1;
     cursor: pointer;
 }
 
 .Nav-Bar img {
-    width: inherit;
-    padding: 8px 0;
+    width: 100%;
+
+    /* width: inherit; */
+    padding: 4px 0;
     aspect-ratio: 3 / 1;
     cursor: pointer;
 }
 
 .nav-Right {
     display: flex;
+    gap: 8px;
+
 }
 
 .input {
@@ -156,7 +162,7 @@ input {
     width: clamp(150px, 100%, 300px);
 
     height: 32px;
-    border-radius: 10px;
+    border-radius: 8px;
     border: 3px solid rgba(254, 215, 36);
     box-sizing: border-box;
     text-align: center;
@@ -178,11 +184,13 @@ button {
     font-style: normal;
     border: 2px solid rgba(254, 215, 36);
     background-color: #E6282A;
+
 }
 
 button:hover {
+    transition: background-color .6s ease-in-out;
     background-color: rgba(254, 215, 36);
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 
 .btn {
@@ -196,8 +204,6 @@ button:hover {
     gap: 10px;
     transform: translateX(0%);
     transition: transform .3s ease-in-out;
-   
-    
 }
 
 .settings-closed{
@@ -223,9 +229,9 @@ button:hover {
 
 .settings-Fav {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
 }
 
 .settings-Fav img {
@@ -246,8 +252,8 @@ button:hover {
 .amount{
     font-size: 12px;
     position: absolute;
-    top: 30px;
-    right: 0;
+    top: 24px;
+    right: -12px;
 }
 
 .of-hidden{

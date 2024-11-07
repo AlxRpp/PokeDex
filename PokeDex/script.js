@@ -17,6 +17,7 @@ async function init() {
     showButton();
     loadFromLocalStorage();
     amountFav();
+    amountFavResp();
 }
 
 
@@ -108,8 +109,11 @@ function showButton() {
 
 function filterPoke() {
     let searchField = document.getElementById('search').value.toLowerCase();
-    if (searchField.length > 2) {
-        let filteredPoke = allPoke.filter(poke => poke.Name.toLowerCase().includes(searchField));
+    let searchFieldResp = document.getElementById('searchResp').value.toLowerCase();
+    let searchterm = searchField || searchFieldResp
+
+    if (searchterm.length > 2) {
+        let filteredPoke = allPoke.filter(poke => poke.Name.toLowerCase().includes(searchterm));
         closeSingleCard();
         document.getElementById('morePoke').classList.add('d-none');
 
@@ -293,6 +297,20 @@ function changeSettings() {
     }
 }
 
+function changeSettingsResp(){
+    let settingsResp = document.getElementById('settingResp').value;
+    settingsResp = +settingsResp
+    if (settingsResp >= 1 && settingsResp <= 100) {
+        limit = settingsResp;
+        openSettings();
+        document.getElementById('settingResp').value = "";
+        showNextPoke();
+    }
+    else {
+        alert("Please enter a number between 1 and 100")
+    }
+}
+
 
 function saveFavoritPoke(ID) {
     let favoritPoke = [...allPoke, ...favoredPoke].find(poke => poke.Id === ID);
@@ -309,6 +327,7 @@ function saveFavoritPoke(ID) {
     }
     saveToLocalStorage();
     amountFav();
+    amountFavResp();
 }
 
 
@@ -341,6 +360,16 @@ function amountFav() {
     }
 }
 
+function amountFavResp() {
+    loadFromLocalStorage()
+    let amount = document.getElementById('amountFavResp');
+    if (favoredPoke.length > 0) {
+        amount.innerText = favoredPoke.length;
+    } else {
+        amount.innerText = "";
+    }
+}
+
 
 function saveToLocalStorage() {
     let favoredsAsText = JSON.stringify(favoredPoke);
@@ -363,3 +392,31 @@ function loadFromLocalStorage() {
         });
     }
 }
+
+function toggleRespMenu(){
+    document.getElementById('toggleRespMenu').classList.toggle('Resp-Icons-Closed');
+}
+
+
+function line1 (){
+    document.getElementById('line1').classList.toggle('top-closed');
+}
+
+
+ function line2(){
+    document.getElementById('line2').classList.toggle('mid-closed');
+ }
+
+
+ function line3(){
+    document.getElementById('line3').classList.toggle('bot-closed');
+ }
+
+  function openSettingsResp(){
+        document.getElementById('settingsResp').classList.toggle('settings-closed-resp');
+  }
+
+  function openSearchResp() {
+    document.getElementById('searchsResp').classList.toggle('search-closed');
+
+  }

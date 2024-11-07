@@ -235,3 +235,7 @@ ul{
 canvas{
     margin: 0 auto;
 }
+
+.noGap{
+    gap: 0;
+}

@@ -1,12 +1,35 @@
 /* style.css */
-@media (max-width: 1024px) {
-    .pika{
+@media (max-width: 1023px) {
+    .nav-Right{
+        display: none;
+    }
+
+    .input{
+        display: none;
+    }
+   
+}
+
+@media (min-width: 1024px) {
+    .Resp-Menu-Wrapper{
         display: none;
     }
 }
 
-@media (max-width: 750px) {
-    .Nav-Bar{
-        flex-direction: column;
+@media (max-width: 500px){
+    body{
+        font-size: 14px;
+    }
+    :root{
+        --paddingBodyLR: 0 12px;
+    }
+
+    .Poke-Card{
+        width: clamp(200px, 90%, 300px); 
+    }
+
+    .Card-Details img {
+        height: 24px;
+        width: 24px;
     }
 }

@@ -59,6 +59,7 @@ function toggleHeart(id) {
     }
 
     amountFav();
+    amountFavResp();
 }
 
 function stopScrolling() {
@@ -218,6 +219,8 @@ function insertMoves(pokemonID) {
     }
     let moves = document.getElementById('insertData');
     moves.classList.remove('flex-row');
+    moves.classList.remove('noGap');
+
 
 
 
@@ -274,6 +277,8 @@ async function fetchPokebyId(pokemonID) {
         let content = document.getElementById('insertData')
         content.innerHTML = "";
         content.classList.add('flex-row');
+        content.classList.add('noGap');
+
         let htmlContent = "";
 
         let currentStage = evolutionChain;
