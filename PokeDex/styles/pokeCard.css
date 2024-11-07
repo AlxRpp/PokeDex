@@ -1,34 +1,78 @@
-
-.Poke-Card{
+.Poke-Card {
     background-color: white;
-    width: 250px;
+    width: clamp(200px, 40%, 250px);
     border-radius: 10px;
     cursor: pointer;
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.048),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.069),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.085),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.101),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.122),
+    100px 100px 80px rgba(0, 0, 0, 0.17);
 }
 
 .Card-Header {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
-.Card-IMG{
+.Card-Header b {
+    font-size: 20px;
+}
+
+.title::first-letter {
+    text-transform: uppercase;
+}
+
+
+.Card-IMG {
     overflow: hidden;
-   
+    /* border-top-right-radius: 80px 80px;
+    border-top-left-radius: 80px 80px; */
+    border-bottom-right-radius: 115px 30px;
+    border-bottom-left-radius: 115px 30px;
+    position: relative;
+    box-shadow: 3px 8px 19px -4px #000000;
+    border: 1.8px solid gray;
 
 }
 
 .Card-IMG img {
     width: 100%;
-    aspect-ratio: 1/1.15;
+    aspect-ratio: 1/1;
+
 }
 
-.Card-IMG img:hover{
+.Card-IMG img:hover {
     transform: scale(1.05);
     transition: all .25s ease-in-out;
 }
 
-.Card-Details{
+.Card-Details {
     display: flex;
     justify-content: space-around;
+    padding: 8px 0;
 }
 
+.Card-Details img {
+    height: 32px;
+    width: 32px;
+
+}
+
+.Icon-Section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    align-items: center;
+}
+
+.Type::first-letter {
+    text-transform: uppercase;
+}

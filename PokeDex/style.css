@@ -1,30 +1,255 @@
-:root{
+:root {
     --paddingBodyLR: 0 32px;
     --PrimaryColor: #3e3938;
-    --SecondaryColor: #135a7e
+    --SecondaryColor: #E6282A
 }
 
-body{
+body {
+    font-family: "Bruno Ace", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     margin: 0;
     box-sizing: border-box;
     background-color: var(--PrimaryColor);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-image: url(./assests/background1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    --sb-track-color: #E6282A;
+    --sb-thumb-color: #fac001;
+    --sb-size: 12px;
 }
 
-.content{
+body::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 0px;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 10px;
+    border: 0px solid #2980ef;
+  }
+  
+  @supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--SecondaryColor);
+    border-bottom: 3px solid rgb(254, 215, 36);
+}
+
+footer {
+    background-color: var(--SecondaryColor);
+    border-top: 3px solid rgb(254, 215, 36);
+    height: 48px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    /* position: sticky; */
+    bottom: 0;
+    width: 100%;
+}
+
+.Main-Content {
+    min-height: calc(100vh - 154px);
+}
+
+
+.content {
     padding: var(--paddingBodyLR);
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    flex-grow: 1;
+    gap: 12px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    justify-content: center;
+  
 }
-    
 
 
-.Nav-Bar{
+
+
+.m-auto {
+    margin: 0 auto;
+    max-width: 1920px;
+}
+
+.Nav-Bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--SecondaryColor);
     padding: var(--paddingBodyLR);
+
+}
+
+.Nav-Left{
+    width: clamp(100px, 100%, 300px);
+    /* padding: 8px 0; */
+    aspect-ratio: 3 / 1;
+    cursor: pointer;
+}
+
+.Nav-Bar img {
+    width: inherit;
+    padding: 8px 0;
+    aspect-ratio: 3 / 1;
+    cursor: pointer;
+}
+
+.nav-Right {
+    display: flex;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: clamp(250px, 90%, 300px);
+}
+
+.input img {
+    width: 32px;
+    aspect-ratio: 1/1;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.loadingBall {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 8rem;
+    z-index: 1;
+}
+
+.loadingBall img {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+}
+
+.nav-Right img {
+    aspect-ratio: 1/1;
+    width: 80px;
+}
+
+input {
+    /* width: 300px; */
+    width: clamp(150px, 100%, 300px);
+
+    height: 32px;
+    border-radius: 10px;
+    border: 3px solid rgba(254, 215, 36);
+    box-sizing: border-box;
+    text-align: center;
+    outline: none;
+}
+
+input:active {
+    background-color: rgba(254, 215, 36);
+    outline: none;
+}
+
+button {
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 8px 24px;
+    border-radius: 8px;
+    font-family: "Bruno Ace", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    border: 2px solid rgba(254, 215, 36);
+    background-color: #E6282A;
+}
+
+button:hover {
+    background-color: rgba(254, 215, 36);
+    font-size: 16px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+}
+
+.settings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(0%);
+    transition: transform .3s ease-in-out;
+   
+    
+}
+
+.settings-closed{
+    transform: translateX(120%);
+    transition: transform .3s ease-in-out;
+}
+
+.settings input {
+    /* width: 200px; */
+    width: clamp(150px, 100%, 300px);
+
+}
+
+.settings button {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.settings img {
+    padding: 8 0px;
+}
+
+.settings-Fav {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.settings-Fav img {
+    width: 24px;
+    height: 24px;
+}
+
+.open-settings {
+    display: flex;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.fav-wrapper{
+    position: relative;
+}
+
+.amount{
+    font-size: 12px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+}
+
+.of-hidden{
+    overflow: hidden;
 }

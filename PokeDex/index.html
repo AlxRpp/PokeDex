@@ -5,26 +5,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
+    <link rel="shortcut icon" href="assests/pokeball.png" type="image/x-icon">
     <script src="script.js"></script>
     <script src="./scripts/HTMLTemplates.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/pokeCard.css">
     <link rel="stylesheet" href="./styles/typeColors.css">
+    <link rel="stylesheet" href="./styles/singlePokeCard.css">
+    <link rel="stylesheet" href="./styles/mediaquerrys.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
-<body onload="init()">
+
+<body id="body" onload="init()">
+
+
     <header>
-        <div class="Nav-Bar">
-            <h2>Pokedex</h2>
-            <input type="text" placeholder="search Pokemon...">
+        <div class="Nav-Bar m-auto">
+            <div class="Nav-Left">
+                <img onclick="renderPoke(), closeSingleCard()" src="./assests/pokemon.png" alt="">
+            </div>
+            <div class="input">
+                <input onkeyup="filterPoke()" type="text" id="search" placeholder=" search Pokemon...">
+                <div class="settings-Fav">
+                    <div class="open-settings">
+                        <img onclick="openSettings()" src="./assests/settings.png" alt="" srcset="">
+                        <div id="settings" class="settings settings-closed">
+                            <input id="setting" type="number" placeholder="How many Pokemons ?">
+                            <button onclick="changeSettings()"><img src="./assests/tick.png" alt="" srcset=""></button>
+                        </div>
+
+                    </div>
+                    <div class="fav-wrapper">
+                        <span class="amount" id="amountFav"></span>
+                        <img onclick="renderFavoreds()" src="./assests/heart.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="nav-Right">
+
+                <img class="pika" onclick="renderPoke(), closeSingleCard()" src="./assests/pikachu.png" alt="">
+            </div>
         </div>
     </header>
 
-    <div class="content" id="content">
-    </div>
+
+    <section class="Main-Content">
+        <div onclick="closeSingleCard()" id="singleCard" class="Wrapper-Single-Card d-none"></div>
+        <div class="d-none loadingBall" id="loadingSpinner">
+            <img src="./assests/pokeBallNoBG.gif" alt="">
+
+        </div>
+
+        <div class="content m-auto" id="content">
+        </div>
+
+        <div class="btn">
+            <button class="d-none" id="morePoke" onclick="showNextPoke()">get more Pokemon</button>
+        </div>
+    </section>
 
 
-    </div>
+    <footer>
+        Copyright © 2024 desingned by Alexander Ruppel
+    </footer>
+
+
 </body>
 
 </html>
