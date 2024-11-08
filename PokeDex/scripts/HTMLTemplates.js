@@ -98,12 +98,11 @@ function openSinglePoke(pokemon) {
                 </div>
             </div>
             <div class="Poke-Img">
-                <img src="${pokemon.Image}">
+                <img src="${pokemon.Gif}">
             </div>
-            <div>
+            <div class="arrows">
             <img onclick="nextPoke(${pokemon.Id})" class="doubleArrow" src="./assests/doubleArrow.png">
             <img onclick="previousPoke(${pokemon.Id})" class="doubleArrowLeft" src="./assests/doubleArrow.png">
-
             </div>
             <div class="More-Information">
                 <div class="Categorys">
