@@ -1,40 +1,21 @@
 function animateBurgerMenu() {
     closeSingleCard();
     toggleRespMenu();
-    line1();
-    line2();
-    line3();
+    toggleClass('line1', 'top-closed');
+    toggleClass('line2', 'mid-closed');
+    toggleClass('line3', 'bot-closed');
+    toggleClass('settingsResp', 'settings-closed-resp');
+    toggleClass('searchResp', 'search-closed');
 }
 
-
-function line1() {
-    document.getElementById('line1').classList.toggle('top-closed');
+function toggleClass (id, className){
+    document.getElementById(id).classList.toggle(className);
 }
-
-
-function line2() {
-    document.getElementById('line2').classList.toggle('mid-closed');
-}
-
-
-function line3() {
-    document.getElementById('line3').classList.toggle('bot-closed');
-}
-
+        
 
 function toggleRespMenu() {
     document.getElementById('toggleRespMenu').classList.toggle('Resp-Icons-Closed');
     document.getElementById('RespoSection').classList.toggle('Responsive-Menu-Closed')
-}
-
-
-function openSettingsResp() {
-    document.getElementById('settingsResp').classList.toggle('settings-closed-resp');
-}
-
-
-function openSearchResp() {
-    document.getElementById('searchsResp').classList.toggle('search-closed');
 }
 
 
