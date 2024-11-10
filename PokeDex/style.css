@@ -4,6 +4,7 @@
     --SecondaryColor: #E6282A
 }
 
+
 body {
     font-family: "Bruno Ace", sans-serif;
     font-weight: 400;
@@ -22,21 +23,25 @@ body {
     --sb-size: 12px;
 }
 
+
 body::-webkit-scrollbar {
     width: var(--sb-size);
   }
   
+
   body::-webkit-scrollbar-track {
     background: var(--sb-track-color);
     border-radius: 0px;
   }
   
+
   body::-webkit-scrollbar-thumb {
     background: var(--sb-thumb-color);
     border-radius: 10px;
     border: 0px solid #2980ef;
   }
   
+
   @supports not selector(::-webkit-scrollbar) {
     body {
         scrollbar-color: var(--sb-thumb-color)
@@ -44,13 +49,15 @@ body::-webkit-scrollbar {
     }
   }
 
+
   header {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
     background-color: var(--SecondaryColor);
     border-bottom: 3px solid rgb(254, 215, 36);
 }
+
 
 footer {
     background-color: var(--SecondaryColor);
@@ -65,8 +72,9 @@ footer {
     width: 100%;
 }
 
+
 .Main-Content {
-    min-height: calc(100vh - 154px);
+    min-height: calc(100vh - 138px);
 }
 
 
@@ -79,10 +87,7 @@ footer {
     padding-top: 32px;
     padding-bottom: 32px;
     justify-content: center;
-  
 }
-
-
 
 
 .m-auto {
@@ -90,15 +95,16 @@ footer {
     max-width: 1920px;
 }
 
+
 .Nav-Bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--SecondaryColor);
     padding: var(--paddingBodyLR);
-    height: 120px;
-
+    height: 84px;
 }
+
 
 .Nav-Left{
     /* width: clamp(100px, 100%, 300px);*/
@@ -108,20 +114,20 @@ footer {
     cursor: pointer;
 }
 
+
 .Nav-Bar img {
     width: 100%;
-
-    /* width: inherit; */
     padding: 4px 0;
     aspect-ratio: 3 / 1;
     cursor: pointer;
 }
 
+
 .nav-Right {
     display: flex;
     gap: 8px;
-
 }
+
 
 .input {
     display: flex;
@@ -129,14 +135,17 @@ footer {
     width: clamp(250px, 90%, 300px);
 }
 
+
 .input img {
     width: 32px;
     aspect-ratio: 1/1;
 }
 
+
 .d-none {
     display: none !important;
 }
+
 
 .loadingBall {
     display: flex;
@@ -147,7 +156,10 @@ footer {
     width: 100%;
     height: 100vh;
     z-index: 1;
+    background-color: rgba(0, 0, 0, 0.9);
+
 }
+
 
 .loadingBall img {
     position: absolute;
@@ -156,15 +168,15 @@ footer {
     z-index: 1;
 }
 
+
 .nav-Right img {
     aspect-ratio: 1/1;
     width: 80px;
 }
 
-input {
-    /* width: 300px; */
-    width: clamp(150px, 100%, 300px);
 
+input {
+    width: clamp(150px, 100%, 300px);
     height: 32px;
     border-radius: 8px;
     border: 3px solid rgba(254, 215, 36);
@@ -173,10 +185,12 @@ input {
     outline: none;
 }
 
+
 input:active {
     background-color: rgba(254, 215, 36);
     outline: none;
 }
+
 
 button {
     margin-bottom: 20px;
@@ -188,60 +202,68 @@ button {
     font-style: normal;
     border: 2px solid rgba(254, 215, 36);
     background-color: #E6282A;
-
+    color: black;
 }
+
 
 button:hover {
     transition: background-color .6s ease-in-out;
     background-color: rgba(254, 215, 36);
-    /* font-size: 16px; */
 }
+
 
 .btn {
     display: flex;
     justify-content: center;
 }
 
+
 .settings {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0px;
     transform: translateX(0%);
     transition: transform .3s ease-in-out;
 }
+
 
 .settings-closed{
     transform: translateX(120%);
     transition: transform .3s ease-in-out;
 }
 
-.settings input {
-    /* width: 200px; */
-    width: clamp(150px, 100%, 300px);
 
+.settings input {
+    width: clamp(150px, 100%, 300px);
 }
 
+
 .settings button {
-    padding: 0;
+    border: 2px solid rgba(254, 215, 36);
+    padding: 6px !important;
     margin: 0;
     border: none;
 }
+
 
 .settings img {
     padding: 8 0px;
 }
 
+
 .settings-Fav {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: end;
 }
+
 
 .settings-Fav img {
     width: 24px;
     height: 24px;
 }
+
 
 .open-settings {
     display: flex;
@@ -249,16 +271,19 @@ button:hover {
     gap: 10px;
 }
 
+
 .fav-wrapper{
     position: relative;
 }
 
+
 .amount{
-    font-size: 12px;
+    font-size: 14px;
     position: absolute;
-    top: 24px;
-    right: -12px;
+    top: 20px;
+    left: -10px;
 }
+
 
 .of-hidden{
     overflow: hidden;

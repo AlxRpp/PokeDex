@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="shortcut icon" href="assests/pokeball.png" type="image/x-icon">
+
     <script src="script.js"></script>
-    <script src="./scripts/HTMLTemplates.js"></script>
+    <script src="./scripts/htmlTemplates.js"></script>
+    <script src="./scripts/helper.js"></script>
+    <script src="./scripts/responsive.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/pokeCard.css">
     <link rel="stylesheet" href="./styles/typeColors.css">
@@ -24,11 +28,8 @@
 
 
 <body id="body" onload="init()">
-
-
     <header>
         <div class="Nav-Bar m-auto">
-
             <div class="Nav-Left">
                 <img onclick="renderPoke(), closeSingleCard()" src="./assests/pokemon.png" alt="">
             </div>
@@ -46,11 +47,11 @@
                     <div class="open-settings">
                         <div id="settings" class="settings settings-closed">
                             <input id="setting" type="number" placeholder="How many Pokemons ?">
-                            <button onclick="changeSettings()"><img src="./assests/tick.png" alt="" srcset=""></button>
+                            <button onclick="changeSettings()">save</button>
                         </div>
                         <img onclick="openSettings()" src="./assests/settings.png" alt="" srcset="">
-
                     </div>
+
                     <div class="fav-wrapper">
                         <span class="amount" id="amountFav"></span>
                         <img onclick="renderFavoreds()" src="./assests/heart.png" alt="">
@@ -59,64 +60,52 @@
                 <img class="pika" onclick="renderPoke(), closeSingleCard()" src="./assests/pikachu.png" alt="">
             </div>
 
-
-
-
-
             <div class="Resp-Menu-Wrapper">
-                <div onclick="toggleRespMenu(), line1(), line2(), line3()" class="Resp-Menu">
+                <div onclick="animateBurgerMenu()" class="Resp-Menu">
                     <div id="line1" class="line top"></div>
                     <div id="line2" class="line mid"></div>
                     <div id="line3" class="line bot"></div>
-                </div>
-
-                <div id="toggleRespMenu" class="Resp-Icons Resp-Icons-Closed ">
-
-                    <div class="open-settings-resp">
-
-
-                        <div id="settingsResp" class="settings-resp settings-closed-resp">
-                            <input class="input-resp" id="settingResp" type="number" placeholder="How many Pokemons ?">
-                            <button class="button-resp" onclick="changeSettingsResp()"><img src="./assests/tick.png"
-                                    alt="" srcset=""></button>
-                        </div>
-
-
-                        <img onclick="openSettingsResp()" src="./assests/settings.png" alt="" srcset="">
-                    </div>
-
-
-
-                    <div class="search-resp">
-                        <div id="searchsResp" class="input-resp search-resp search-closed">
-                            <input id="searchResp" class="input-resp" onkeyup="filterPoke()" type="text"
-                                placeholder=" search Pokemon...">
-
-                        </div>
-
-                        <img onclick="openSearchResp()" src="./assests/search.png" alt="">
-                    </div>
-
-
-
-                    <div onclick="renderFavoreds()" class="fav-wrapper-resp">
-                        <span class="amount-Resp" id="amountFavResp"></span>
-                        <img src="./assests/heart.png" alt="">
-                    </div>
-
-
                 </div>
             </div>
         </div>
     </header>
 
+    <section Responsive>
+        <div class="Responsive-Menu" id="RespoSection">
+            <div id="toggleRespMenu" class="Resp-Icons Resp-Icons-Closed ">
+
+                <div class="search-resp">
+                    <div id="searchsResp" class="input-resp search-resp search-closed">
+                        <input id="searchResp" class="input-resp" onkeyup="filterPoke()" type="text"
+                            placeholder=" search Pokemon...">
+                    </div>
+                </div>
+
+
+                <div class="open-settings-resp">
+                    <div id="settingsResp" class="settings-resp settings-closed-resp">
+                        <input class="input-resp" id="settingResp" type="number" placeholder="how many u wanna load ?">
+                        <button class="button-resp" onclick="changeSettingsResp(), animateBurgerMenu()">save</button>
+                    </div>
+                </div>
+
+                <div class="fav-wrapper-resp">
+                    <button onclick="renderFavoreds(), animateBurgerMenu()" class="button-resp">show me my favored ´s (
+                        <span class="amount-Resp" id="amountFavResp"></span> )</button>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
 
     <section class="Main-Content">
-        <div onclick="closeSingleCard()" id="singleCard" class="Wrapper-Single-Card d-none"></div>
-        
+        <div onclick="closeSingleCard()" id="singleCard" class="Wrapper-Single-Card d-none">
+        </div>
+
         <div class="d-none loadingBall" id="loadingSpinner">
             <img src="./assests/pokeBallNoBG.gif" alt="">
-
         </div>
 
         <div class="content m-auto" id="content">
@@ -124,15 +113,13 @@
 
         <div class="btn">
             <button class="d-none" id="morePoke" onclick="showNextPoke()">get more Pokemon</button>
+            <button class="d-none" id="startPoke" onclick="renderPoke()">go back</button>
         </div>
     </section>
-
 
     <footer>
         Copyright © 2024 desingned by Alexander Ruppel
     </footer>
-
-
 </body>
 
 </html>

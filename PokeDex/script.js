@@ -8,21 +8,23 @@ let favoredPoke = [];
 let isInFavoritesView = false;
 
 
-
+//------------------- HTML-Body onloadFunction-------------------------
 
 async function init() {
     currentPoke = allPoke;
     await loadAllPoke();
-    renderPoke();
-    showButton();
-    loadFromLocalStorage();
-    amountFav();
-    amountFavResp();
+    renderPoke(); // -> script.js:94
+    showButton(); // -> helper.js:76
+    loadFromLocalStorage(); // -> script.js:273
+    amountFav(); // -> script.js:237
+    amountFavResp(); // -> responsive.js:57
 }
 
 
+//------------------- function´s to load Data from the PokeAPI-----------------------
+
 async function loadAllPoke() {
-    showLoadingSpinner();
+    showLoadingSpinner(); // -> helper.js:55
     try {
         let response = await fetch(baseUrl + limitUrl + limit + offsetUrl + offset);
         let responseAsJson = await response.json()
@@ -35,106 +37,16 @@ async function loadAllPoke() {
             let pokeGif = pokeDetails.sprites.other.showdown.front_default;
             let pokeType = pokeDetails.types.map(typeInfo => typeInfo.type.name).join(' ');
             let pokeId = pokeDetails.id
-            pushPokeToArr(pokeName, pokeUrl, pokeId, pokeImage, pokeType, pokeGif)
-            //console.log(pokeName, pokeUrl);
-            fetchSinglePoke(pokeUrl);
+            pushPokeToArr(pokeName, pokeUrl, pokeId, pokeImage, pokeType, pokeGif) // -> helper.js:3
+            fetchSinglePoke(pokeUrl); // -> script.js:52
         }
-
     }
     catch (error) {
         console.error("das lief etwas schief");
     }
-
     offset = allPoke.length;
-    removeLoadingSpinner();
-
-
+    removeLoadingSpinner(); // -> helper.js:61
 }
-
-
-function pushPokeToArr(pokeName, pokeUrl, pokeId, pokeImage, pokeType, pokeGif) {
-    allPoke.push(
-        {
-            "Liked": false,
-            "Name": pokeName,
-            "URL": pokeUrl,
-            "Id": pokeId,
-            "Image": pokeImage,
-            "Type": pokeType,
-            "Gif": pokeGif
-        }
-    )
-}
-
-function renderPoke() {
-    isInFavoritesView = false;
-    let content = document.getElementById('content');
-    let html = "";
-    content.innerHTML = "";
-    for (let pokeIndex = 0; pokeIndex < allPoke.length; pokeIndex++) {
-        const pokemon = allPoke[pokeIndex];
-        html += pokeCard(pokemon);
-    }
-    content.innerHTML += html;
-    showButton();
-}
-
-
-async function showNextPoke() {
-    closeSingleCard();
-    document.getElementById('morePoke').disabled = true;
-    await loadAllPoke();
-    renderPoke();
-    document.getElementById('morePoke').disabled = false;
-}
-
-
-function showLoadingSpinner() {
-    document.getElementById('loadingSpinner').classList.remove('d-none');
-}
-
-
-function removeLoadingSpinner() {
-    document.getElementById('loadingSpinner').classList.add('d-none');
-}
-
-
-function showButton() {
-    let myPoke = currentPoke.length;
-    if (myPoke > 0) {
-        document.getElementById('morePoke').classList.remove('d-none');
-    }
-}
-
-
-function filterPoke() {
-    let searchField = document.getElementById('search').value.toLowerCase();
-    let searchFieldResp = document.getElementById('searchResp').value.toLowerCase();
-    let searchterm = searchField || searchFieldResp
-
-    if (searchterm.length > 2) {
-        let filteredPoke = allPoke.filter(poke => poke.Name.toLowerCase().includes(searchterm));
-        closeSingleCard();
-        document.getElementById('morePoke').classList.add('d-none');
-
-
-        renderFilteredPoke(filteredPoke);
-    } else {
-        renderFilteredPoke(allPoke);
-    }
-}
-
-
-function renderFilteredPoke(filteredPoke) {
-    let content = document.getElementById('content');
-    let html = "";
-    content.innerHTML = "";
-    filteredPoke.forEach(pokemon => {
-        html += pokeCard(pokemon)
-    });
-    content.innerHTML = html;
-}
-
 
 
 async function fetchSinglePoke(url) {
@@ -150,89 +62,114 @@ async function fetchSinglePoke(url) {
         let evolutionUrl = speciesDataAsJson.evolution_chain.url;
         let evolution = await fetch(evolutionUrl);
         let evolutionData = await evolution.json();
-        updateArray(speciesDataAsJson, singlePokeAsJson, male, female, evolutionData);
+        updateArray(speciesDataAsJson, singlePokeAsJson, male, female, evolutionData); // -> helper.js:18
     } catch (error) {
         console.error(error, "das hat nicht geklappt");
     }
 }
 
 
-function updateArray(speciesDataAsJson, singlePokeAsJson, male, female, evolutionData) {
-    let newData = {
-        "About": {
-            "Species": speciesDataAsJson.genera[7].genus.split(' ')[0],
-            "Height": singlePokeAsJson.height,
-            "Weight": singlePokeAsJson.weight,
-            "Abilities": singlePokeAsJson.abilities.map(abilitie => abilitie.ability.name).join(' / '),
-        },
+async function fetchPokebyId(pokemonID) {
+    try {
+        let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`);
+        if (!response.ok) {
+            throw new Error("Fehler beim Laden des Pokemons");
+        }
+        let data = await response.json();
+        console.log(data);
 
-        "Breeding": {
-            "Male": male,
-            "Female": female,
-            "Growth_Rate": speciesDataAsJson.growth_rate.name,
-            "Egg_Groups": speciesDataAsJson.egg_groups[0].name,
-        },
-
-        "Base Stats": {
-            "name": singlePokeAsJson['stats'].map(data => data.stat.name),
-            "stats": singlePokeAsJson['stats'].map(data => data.base_stat)
-        },
-
-        "Moves": singlePokeAsJson['moves'].slice(0, 10).map(move => move.move.name).join(' '),
-        "Evolution_Chain": evolutionData
-    }
-    let pokeUpdate = allPoke.find(pokemon => pokemon.Id === singlePokeAsJson.id);
-    if (pokeUpdate) {
-        Object.assign(pokeUpdate, newData);
+        return {
+            "Id": data.id,
+            "Name": data.name,
+            "Image": data.sprites.other.dream_world.front_default
+        }
+    } catch (error) {
+        console.error(error);
     }
 }
 
 
-function renderSinglePoke(id){
+//--------------------function´s to render--------------------
+
+function renderPoke() {
+    isInFavoritesView = false;
+    let content = document.getElementById('content');
+    let html = "";
+    content.innerHTML = "";
+    for (let pokeIndex = 0; pokeIndex < allPoke.length; pokeIndex++) {
+        const pokemon = allPoke[pokeIndex];
+        html += pokeCard(pokemon); // -> htmlTemplate.js:3
+    }
+    content.innerHTML += html;
+    showButton(); // -> helper.js:76
+    document.getElementById('startPoke').classList.add('d-none');
+}
+
+
+function renderSinglePoke(id) {
     let pokemon = isInFavoritesView
-    ? favoredPoke.find(poke => poke.Id === id)
-    :allPoke.find(poke => poke.Id === id);
+        ? favoredPoke.find(poke => poke.Id === id)
+        : allPoke.find(poke => poke.Id === id);
 
-    if (pokemon){
+    if (pokemon) {
         let content = document.getElementById('singleCard');
-        content.innerHTML = openSinglePoke(pokemon);
+        content.innerHTML = openSinglePoke(pokemon); // -> htmlTemplate.js:32
     }
-    
 }
 
-// function nextFavoredPoke(currentId){
-//     let currentIndex = favoredPoke.findIndex(poke => poke.Id === currentId);
-//     let nextIndex = currentIndex++;
-//     if (nextIndex >= favoredPoke.length) {
-//         nextIndex = 0;
-//     }
-//     renderSinglePoke(favoredPoke[nextIndex].Id);
-// }
 
-// function previousFavoredPoke (currentId){
-//     let currentIndex = favoredPoke.findIndex(poke => poke.Id === currentId);
-//     let prevIndex = currentIndex--;
-//     if (prevIndex < 0) {
-//         prevIndex = favoredPoke.length -1;
-//     }
-//     renderSinglePoke(favoredPoke[prevIndex].Id)
-// }
-
-
-// function renderSinglePoke(id) {
-//     let pokemon = allPoke.find(poke => poke.Id === id);
-//     if (pokemon) {
-//         let content = document.getElementById('singleCard');
-//         content.innerHTML = openSinglePoke(pokemon);
-//     }
-// }
-
-function closeSingleCard() {
-    document.getElementById('singleCard').innerHTML = ""
-    let backGround = document.getElementById('singleCard').classList.add('d-none');
-    enableScrolling();
+function renderFilteredPoke(filteredPoke) {
+    let content = document.getElementById('content');
+    let html = "";
+    content.innerHTML = "";
+    filteredPoke.forEach(pokemon => {
+        html += pokeCard(pokemon) // -> htmlTemplate.js:3
+    });
+    content.innerHTML = html;
 }
 
+
+function renderFavoreds() {
+    isInFavoritesView = true;
+    if (favoredPoke.length > 0) {
+        let content = document.getElementById('content');
+        let html = "";
+        content.innerHTML = "";
+        favoredPoke.forEach(pokemon => {
+            html += pokeCard(pokemon) // -> htmlTemplate.js:3
+        });
+        content.innerHTML = html;
+        closeSingleCard(); // -> helper.js:48
+        document.getElementById('morePoke').classList.add('d-none');
+        document.getElementById('startPoke').classList.remove('d-none');
+    } else {
+        renderPoke(); // -> script.js:94
+    }
+    closeSingleCard(); // -> helper.js:48
+}
+
+
+//--------------filter Pokemon----------------
+
+function filterPoke() {
+    let searchField = document.getElementById('search').value.toLowerCase();
+    let searchFieldResp = document.getElementById('searchResp').value.toLowerCase();
+    let searchterm = searchField || searchFieldResp
+
+    if (searchterm.length > 2) {
+        let filteredPoke = allPoke.filter(poke => poke.Name.toLowerCase().includes(searchterm));
+        closeSingleCard(); // -> helper.js:48
+        document.getElementById('morePoke').classList.add('d-none');
+
+
+        renderFilteredPoke(filteredPoke); // -> script.js:121
+    } else {
+        renderFilteredPoke(allPoke); // -> script.js:121
+    }
+}
+
+
+//---------------- navigate to next/previous Poke-------------
 
 function nextPoke(currentId) {
     let currentIndex = isInFavoritesView
@@ -240,8 +177,6 @@ function nextPoke(currentId) {
         : allPoke.findIndex(poke => poke.Id === currentId);
 
     let nextIndex = currentIndex + 1;
-
-    // Wenn wir am Ende der Liste sind, zurück zum Anfang
     if (isInFavoritesView) {
         if (nextIndex >= favoredPoke.length) {
             nextIndex = 0;
@@ -251,7 +186,7 @@ function nextPoke(currentId) {
         if (nextIndex >= allPoke.length) {
             nextIndex = 0;
         }
-        renderSinglePoke(allPoke[nextIndex].Id);
+        renderSinglePoke(allPoke[nextIndex].Id); // -> script.js:109
     }
 }
 
@@ -263,20 +198,21 @@ function previousPoke(currentId) {
 
     let prevIndex = currentIndex - 1;
 
-    // Wenn wir am Anfang der Liste sind, zum Ende springen
     if (isInFavoritesView) {
         if (prevIndex < 0) {
             prevIndex = favoredPoke.length - 1;
         }
-        renderSinglePoke(favoredPoke[prevIndex].Id);
+        renderSinglePoke(favoredPoke[prevIndex].Id); // -> script.js:109
     } else {
         if (prevIndex < 0) {
             prevIndex = allPoke.length - 1;
         }
-        renderSinglePoke(allPoke[prevIndex].Id);
+        renderSinglePoke(allPoke[prevIndex].Id); // -> script.js:109
     }
 }
 
+
+//--------------header settings & favoreds----------
 
 function openSettings() {
     document.getElementById('settings').classList.toggle('settings-closed')
@@ -288,70 +224,18 @@ function changeSettings() {
     newsetting = +newsetting;
     if (newsetting >= 1 && newsetting <= 100) {
         limit = newsetting;
-        openSettings();
+        openSettings(); // -> script.js:217
         document.getElementById('setting').value = "";
-        showNextPoke();
+        showNextPoke(); // -> helper.js:67
     }
     else {
         alert("Please enter a number between 1 and 100")
     }
-}
-
-function changeSettingsResp(){
-    let settingsResp = document.getElementById('settingResp').value;
-    settingsResp = +settingsResp
-    if (settingsResp >= 1 && settingsResp <= 100) {
-        limit = settingsResp;
-        openSettings();
-        document.getElementById('settingResp').value = "";
-        showNextPoke();
-    }
-    else {
-        alert("Please enter a number between 1 and 100")
-    }
-}
-
-
-function saveFavoritPoke(ID) {
-    let favoritPoke = [...allPoke, ...favoredPoke].find(poke => poke.Id === ID);
-    if (favoritPoke) {
-        if (favoritPoke.Liked) {
-            if (!favoredPoke.some(poke => poke.Id === favoritPoke.ID)) {
-                favoredPoke.push(favoritPoke);
-                console.log("Pokemon zu den Favoriten hinzugefügt");
-            }
-        } else {
-            favoredPoke = favoredPoke.filter(poke => poke.Id !== favoritPoke.Id);
-            console.log("Pokemon aus der Favoriten-Liste entfernt");
-        }
-    }
-    saveToLocalStorage();
-    amountFav();
-    amountFavResp();
-}
-
-
-function renderFavoreds() {
-    isInFavoritesView = true;
-    if (favoredPoke.length > 0) {
-        let content = document.getElementById('content');
-        let html = "";
-        content.innerHTML = "";
-        favoredPoke.forEach(pokemon => {
-            html += pokeCard(pokemon)
-        });
-        content.innerHTML = html;
-        closeSingleCard();
-        document.getElementById('morePoke').classList.add('d-none');
-    } else {
-        renderPoke();
-    }
-    closeSingleCard();
 }
 
 
 function amountFav() {
-    loadFromLocalStorage()
+    loadFromLocalStorage() // -> script.js:273
     let amount = document.getElementById('amountFav');
     if (favoredPoke.length > 0) {
         amount.innerText = favoredPoke.length;
@@ -360,14 +244,23 @@ function amountFav() {
     }
 }
 
-function amountFavResp() {
-    loadFromLocalStorage()
-    let amount = document.getElementById('amountFavResp');
-    if (favoredPoke.length > 0) {
-        amount.innerText = favoredPoke.length;
-    } else {
-        amount.innerText = "";
+
+//---------------save/load to/from LocalStorage-------------
+
+function saveFavoritPoke(ID) {
+    let favoritPoke = [...allPoke, ...favoredPoke].find(poke => poke.Id === ID);
+    if (favoritPoke) {
+        if (favoritPoke.Liked) {
+            if (!favoredPoke.some(poke => poke.Id === favoritPoke.ID)) {
+                favoredPoke.push(favoritPoke);
+            }
+        } else {
+            favoredPoke = favoredPoke.filter(poke => poke.Id !== favoritPoke.Id);
+        }
     }
+    saveToLocalStorage();
+    amountFav(); // -> script.js:237
+    amountFavResp(); // -> responsive.js:56
 }
 
 
@@ -381,42 +274,8 @@ function loadFromLocalStorage() {
     let favoredsAsText = localStorage.getItem('pokemon')
     if (favoredsAsText) {
         favoredPoke = JSON.parse(favoredsAsText);
-
-        // let exitsInAllPoke = allPoke.some(pokemon => pokemon.Id === favoredPoke.Id);
-        // if (!exitsInAllPoke) {
-        //     allPoke.push(favoredPoke);
-        // }
-
         allPoke.forEach(pokemon => {
             pokemon.Liked = favoredPoke.some(favPoke => favPoke.Id === pokemon.Id)
         });
     }
 }
-
-function toggleRespMenu(){
-    document.getElementById('toggleRespMenu').classList.toggle('Resp-Icons-Closed');
-}
-
-
-function line1 (){
-    document.getElementById('line1').classList.toggle('top-closed');
-}
-
-
- function line2(){
-    document.getElementById('line2').classList.toggle('mid-closed');
- }
-
-
- function line3(){
-    document.getElementById('line3').classList.toggle('bot-closed');
- }
-
-  function openSettingsResp(){
-        document.getElementById('settingsResp').classList.toggle('settings-closed-resp');
-  }
-
-  function openSearchResp() {
-    document.getElementById('searchsResp').classList.toggle('search-closed');
-
-  }

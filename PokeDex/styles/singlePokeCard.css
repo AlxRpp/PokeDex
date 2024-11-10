@@ -1,4 +1,4 @@
-h1{
+h1 {
     margin-block-start: 0;
     margin-block-end: 0;
     font-weight: 300;
@@ -6,9 +6,10 @@ h1{
     z-index: 999;
 }
 
-.Wrapper-Single-Card{
+
+.Wrapper-Single-Card {
     width: 100%;
-    height: calc(100dvh + -123px);
+    height: calc(100dvh + -87px);
     background-color: rgba(0, 0, 0, 0.9);
     position: fixed;
     z-index: 1;
@@ -17,8 +18,9 @@ h1{
     align-items: center;
 }
 
-.Single-Poke-Card{
-    width: clamp(280px, 80%, 350px);
+
+.Single-Poke-Card {
+    width: clamp(280px, 100%, 350px);
     border-radius: 24px;
     box-sizing: border-box;
     font-size: 12px;
@@ -26,24 +28,25 @@ h1{
     top: calc(50% - 332px);
     left: calc(50% - 175px); */
     z-index: 1;
-  
-
 }
 
-.Head-Icon{
+
+.Head-Icon {
     padding: 12px;
     display: flex;
     justify-content: space-between;
     color: white;
 }
 
-.Head-Icon img{
+
+.Head-Icon img {
     width: 20px;
     aspect-ratio: 1/1;
     cursor: pointer;
 }
 
-.Head-Infos{
+
+.Head-Infos {
     padding: 0 12px;
     display: flex;
     justify-content: space-between;
@@ -51,19 +54,25 @@ h1{
     color: white;
 }
 
-.Types{
+
+.Types {
     display: flex;
-    gap: 8px;
-}
-
-.Head-Left{
-margin-block-start: 0 !important;
-margin-block-end: 0 !important;
+    gap: 6px;
 }
 
 
+.Types p {
+    margin: 0;
+}
 
-.Poke-Img{
+
+.Head-Left {
+    margin-block-start: 0 !important;
+    margin-block-end: 0 !important;
+}
+
+
+.Poke-Img {
     padding: 20px 0;
     display: flex;
     justify-content: center;
@@ -72,73 +81,77 @@ margin-block-end: 0 !important;
     height: 170px;
 }
 
-.Poke-Img img{
+
+.Poke-Img img {
     width: 256px;
     position: absolute;
     bottom: -20px;
     aspect-ratio: 1/1;
 }
 
-.More-Information{
- 
+
+.More-Information {
     background-color: #fff;
     width: 100%;
     padding: 0 !important;
     border-radius: 24px;
-
 }
 
-.Categorys{
 
+.Categorys {
     padding-top: 32px;
     padding-bottom: 12px;
     padding-left: 12px;
     padding-right: 12px;
-cursor: pointer;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
 }
 
-.divider{
+
+.divider {
     height: 2px;
     width: 93%;
-  background-color: lightgray;
-  margin: 0 auto;
-  }
+    background-color: lightgray;
+    margin: 0 auto;
+}
 
-  .About{
+
+.About {
     display: flex;
-    gap: 10px;
+    gap: 14px;
     flex-direction: column;
     padding: 12px;
     height: 300px;
-   
-  }
+}
 
-  .Pokemon-Info{
+
+.Pokemon-Info {
     display: flex;
     gap: 75px;
     align-items: center;
-  }
+}
 
-  .Info-Left{
+
+.Info-Left {
     width: 16%;
     color: rgba(0, 0, 0, 0.5);
-  }
+}
 
 
-
-  .gender img{
+.gender img {
     width: 20px;
     aspect-ratio: 1/1;
     text-align: center;
-  }
+}
 
-  .arrows{
+
+.arrows {
     position: relative;
 }
 
-  .doubleArrow{
+
+.doubleArrow {
     height: 48px;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
@@ -148,7 +161,8 @@ cursor: pointer;
     cursor: pointer;
 }
 
-.doubleArrowLeft{
+
+.doubleArrowLeft {
     transform: scaleX(-1);
     height: 48px;
     aspect-ratio: 1 / 1;
@@ -159,51 +173,52 @@ cursor: pointer;
     cursor: pointer;
 }
 
-.Type-Border{
-   font-size: 10px;
-   /* border: 1px solid white; */
-   padding: 0px 8px;
-   /* border-radius: 10px; */
+
+.Type-Border {
+    font-size: 11px;
+    /* border: 1px solid white; */
+    padding: 0px 0px;
+    /* border-radius: 10px; */
 }
 
-ul{
+
+ul {
     margin: 0;
 }
 
-.evolution-image{
+
+.evolution-image {
     aspect-ratio: 1/1;
     width: 96px;
 }
 
 
-.flex-row{
+.flex-row {
     flex-direction: row;
     justify-content: center;
 }
 
-.About:first-child{
+
+.About:first-child {
     position: relative;
-    top:25%;
+    top: 25%;
     text-align: center;
 }
 
 
-.first{
+.first {
     text-align: center;
 }
 
-.active{
+
+.active {
     text-decoration: underline;
-    text-underline-offset:15.5px;
-    text-decoration-color: #E6282A;
-    text-decoration-thickness: 2px;
-   
-
+    text-underline-offset: 13.5px;
+    text-decoration-thickness: 3.5px;
 }
 
 
-
-.arrow2{
+.arrow2 {
     width: 24px;
     height: 24px;
     transform: rotateZ(-45deg);
@@ -211,7 +226,8 @@ ul{
     top: 45%;
 }
 
-.arrow1{
+
+.arrow1 {
     width: 24px;
     height: 24px;
     transform: rotateZ(-45deg);
@@ -219,34 +235,82 @@ ul{
     top: 77%;
 }
 
-.small-FS{
-    font-size: 12px;
+
+.small-FS {
+    font-size: 10px;
     text-align: center;
-    
 }
 
-.evolution0{
+
+.evolution0 {
     display: flex;
     flex-direction: column;
     justify-content: end;
 }
 
-.evolution1{
+
+.evolution1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.evolution2{
+
+.evolution2 {
     display: flex;
     flex-direction: column;
     justify-content: start;
 }
 
-canvas{
+canvas {
     margin: 0 auto;
 }
 
-.noGap{
+
+.noGap {
     gap: 0;
+}
+
+
+.Stat-Mobile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 25px;
+}
+
+
+.Info-Left.Stat-Name {
+    width: 85px;
+    margin-right: 10px;
+}
+
+
+.Stat-Value {
+    width: 20px;
+    margin-right: 10px;
+}
+
+
+.Progress-Bar {
+    flex-grow: 1;
+    background-color: #e0e0e0;
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.stat-fill {
+    height: 100%;
+}
+
+
+.stat-fill.green {
+    background-color: #3FA129;
+}
+
+
+.stat-fill.red {
+    background-color: #E6282A;
 }

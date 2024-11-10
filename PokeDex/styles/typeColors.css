@@ -1,73 +1,207 @@
-.flying{
+.flying {
     background-color: #81B9EF;
 }
 
-.poison{
+
+.flying-shadow {
+    box-shadow: 0px 0px 70px -10px #81B9EF;
+    text-decoration-color: #81B9EF !important;
+}
+
+
+.poison {
     background-color: #9142CB;
 }
 
-.bug{
+
+.poison-shadow {
+    box-shadow: 0px 0px 70px -10px #9142CB;
+    text-decoration-color: #9142CB !important;
+
+}
+
+
+.bug {
     background-color: #91A219;
 }
 
-.fire{
+
+.bug-shadow {
+    box-shadow: 0px 0px 70px -10px #91A219;
+    text-decoration-color: #91A219 !important;
+}
+
+
+.fire {
     background-color: #E6282A;
 }
 
-.ground{
+
+.fire-shadow {
+    box-shadow: 0px 0px 70px -10px #E6282A;
+    text-decoration-color: #E6282A !important;
+}
+
+
+.ground {
     background-color: #915120;
 }
 
-.rock{
+
+.ground-shadow {
+    box-shadow: 0px 0px 70px -10px #915120;
+    text-decoration-color: #915120 !important;
+}
+
+
+.rock {
     background-color: #AFA981;
 }
 
-.water{
+
+.rock-shadow {
+    box-shadow: 0px 0px 70px -10px #AFA981;
+    text-decoration-color: #AFA981 !important;
+}
+
+
+.water {
     background-color: #2980EF;
 }
 
-.electric{
+
+.water-shadow {
+    box-shadow: 0px 0px 70px -10px #2980EF;
+    text-decoration-color: #2980EF !important;
+}
+
+
+.electric {
     background-color: #FAC001;
 }
 
-.steel{
+
+.electric-shadow {
+    box-shadow: 0px 0px 70px -10px #FAC001;
+    text-decoration-color: #FAC001 !important;
+}
+
+
+.steel {
     background-color: #60A1B8;
 }
 
-.dark{
+
+.steel-shadow {
+    text-decoration-color: #60A1B8 !important;
+    box-shadow: 0px 0px 70px -10px #60A1B8;
+}
+
+
+.dark {
     background-color: #624D4E;
 }
 
-.dragon{
+
+.dark-shadow {
+    box-shadow: 0px 0px 70px -10px #624D4E;
+    text-decoration-color: #624D4E !important;
+}
+
+
+.dragon {
     background-color: #5061E1;
 }
 
-.psychic{
+
+.dragon-shadow {
+
+    box-shadow: 0px 0px 70px -10px #5061E1;
+    text-decoration-color: #5061E1 !important;
+}
+
+
+.psychic {
     background-color: #EE4179;
 }
 
-.normal{
-background-color: #9FA19F;
+
+.psychic-shadow {
+    box-shadow: 0px 0px 70px -10px #EE4179;
+    text-decoration-color: #EE4179 !important;
 }
 
-.ice{
+
+.normal {
+    background-color: #9FA19F;
+}
+
+
+.normal-shadow {
+    box-shadow: 0px 0px 70px -10px #9FA19F;
+    text-decoration-color: #9FA19F !important;
+}
+
+
+.ice {
     background-color: #3CCEF3;
 }
-.ghost{
+
+
+.ice-shadow {
+    box-shadow: 0px 0px 70px -10px #3CCEF3;
+    text-decoration-color: #3CCEF3 !important;
+}
+
+
+.ghost {
     background-color: #6F4170;
 }
 
-.fighting{
+
+.ghost-shadow {
+    box-shadow: 0px 0px 70px -10px #6F4170;
+    text-decoration-color: #6F4170 !important;
+}
+
+
+.fighting {
     background-color: #FF8001;
 }
 
-.fairy{
+
+.fighting-shadow {
+    box-shadow: 0px 0px 70px -10px #FF8001;
+    text-decoration-color: #FF8001 !important;
+}
+
+.fairy {
     background-color: #EF70EF;
 }
 
-.bird{
+
+.fairy-shadow {
+    box-shadow: 0px 0px 70px -10px #EF70EF;
+    text-decoration-color: #EF70EF !important;
+}
+
+.bird {
     background-color: #69A090;
 }
-.grass{
+
+
+.bird-shadow {
+    box-shadow: 0px 0px 70px -10px #69A090;
+    text-decoration-color: #69A090 !important;
+}
+
+
+.grass {
     background-color: #3FA129;
+}
+
+
+.grass-shadow {
+    box-shadow: 0px 0px 70px -10px #3FA129;
+    text-decoration-color: #3FA129 !important;
 }

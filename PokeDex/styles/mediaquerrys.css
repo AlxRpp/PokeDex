@@ -4,42 +4,71 @@
         display: none;
     }
 
+
     .input {
         display: none;
     }
 
 }
 
+
+
 @media (min-width: 1024px) {
     .Resp-Menu-Wrapper {
         display: none;
     }
+
+
+    .Responsive-Menu{
+        display: none;
+    }
 }
+
+
 
 @media (max-width: 500px) {
     body {
         font-size: 14px;
     }
 
+
     :root {
         --paddingBodyLR: 0 12px;
     }
+
 
     .Poke-Card {
         width: clamp(200px, 90%, 300px);
     }
 
 
+    .Nav-Bar{
+        height: 64px;
+    }
 
 
+    .Nav-Left{
+        width: 128px;
+    }
 
 
     /* singlePokeCard.css */
+
+    .Wrapper-Single-Card {
+        height: calc(100dvh + -67px);
+    }
+
+
+    .Single-Poke-Card{
+        width: clamp(280px, 100%, 300px);
+    }
+
 
     .Card-Details img {
         height: 24px;
         width: 24px;
     }
+
 
     .Head-Icon {
         padding-top: 12px;
@@ -48,9 +77,11 @@
         padding-bottom: 0;
     }
 
+
     .Head-Left h1 {
         font-size: 24px;    
     }
+
 
     .active {
         text-underline-offset: 14.5px; 
@@ -61,6 +92,7 @@
         padding: 0;
         height: 112px;
     }
+
 
     .Poke-Img img {
         width: 128px;
@@ -79,6 +111,7 @@
         border-bottom-left-radius: 50%;
     }
 
+
     .doubleArrowLeft {
         height: 32px;
         left: 0px;
@@ -88,10 +121,12 @@
         border-bottom-left-radius: 50%;
     }
 
+
     .About {
-        gap: 6px;
-        height: 230px;
+        gap: 10px;
+        height: 250px;
     }
+
 
     .Types {
         gap: 8px;
@@ -102,12 +137,12 @@
         margin: 0;
     }
 
+
     .Type-Border {
+        font-size: 10px;
+
         padding: 0;
     }
-
-
-
 
 
     /* style.css -> LoadingBall */
@@ -132,8 +167,110 @@
         height: 300px;
     }
 
+
     .evolution-image {
         width: 70px;
     }
 
+
+    /* respMenu.css */
+
+    .Responsive-Menu{
+        top: 67px !important;
+    }
+}
+
+
+
+
+
+@media (max-height: 850px) {
+    .Single-Poke-Card{
+        width: clamp(280px, 100%, 300px);
+    }
+
+
+    .Wrapper-Single-Card {
+        height: calc(100dvh + -67px);
+    }
+
+
+    .Card-Details img {
+        height: 24px;
+        width: 24px;
+    }
+
+
+    .Head-Icon {
+        padding-top: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-bottom: 0;
+    }
+
+
+    .Head-Left h1 {
+        font-size: 24px;    
+    }
+
+
+    .active {
+        text-underline-offset: 14.5px; 
+    }
+
+
+    .Poke-Img {
+        padding: 0;
+        height: 112px;
+    }
+
+
+    .Poke-Img img {
+        width: 128px;
+        position: absolute;
+        bottom: -16px;
+        aspect-ratio: 1 / 1;
+    }
+
+
+    .doubleArrow {
+        height: 32px;
+        right: 0px;
+        top: -84px;
+        border-radius: 0;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+    }
+
+
+    .doubleArrowLeft {
+        height: 32px;
+        left: 0px;
+        top: -84px;
+        border-radius: 0;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+    }
+
+
+    .About {
+        gap: 10px;
+        height: 250px;
+    }
+
+
+    .Types {
+        gap: 8px;
+    }
+
+
+    .Types p {
+        margin: 0;
+    }
+
+    
+    .Type-Border {
+        font-size: 10px;
+        padding: 0;
+    }
 }
